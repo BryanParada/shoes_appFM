@@ -39,8 +39,36 @@ class _ShoeShadow extends StatelessWidget {
       padding: EdgeInsets.all(40),
       child: Stack(
         children: <Widget>[
+
+          Positioned(
+            bottom: 20,
+            right: 0,
+            child: _Shadow()
+            ),
+
           Image( image: AssetImage('assets/imgs/azul.png'))
         ],
+      ),
+    );
+  }
+}
+
+class _Shadow extends StatelessWidget { 
+
+  @override
+  Widget build(BuildContext context) {
+    return Transform.rotate(
+      angle: -0.5,
+      child: Container(
+        width: 230,
+        height: 120,
+        decoration: BoxDecoration(
+          // color: Colors.red,
+          borderRadius: BorderRadius.circular(100),
+          boxShadow: [
+            BoxShadow(color: Color(0xffEAA14E), blurRadius: 40)
+          ]
+        ),
       ),
     );
   }
