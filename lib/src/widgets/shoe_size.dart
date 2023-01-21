@@ -109,18 +109,21 @@ class _SizesShoeBox extends StatelessWidget {
       alignment: Alignment.center,
       child: Text('${numSize.toString().replaceAll('.0', '')}',
        style: TextStyle(
-          color: Color(0xffF1A23A),
+          color: (this.numSize == 9) ? Colors.white :   Color(0xffF1A23A),
           fontSize: 15,
           fontWeight: FontWeight.bold
       )),
       height: 45,
       width: 45,
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: (this.numSize == 9) ? Color(0xffF1A23A) : Colors.white,
         borderRadius: BorderRadius.circular(10),
         boxShadow: [
+          if(this.numSize == 9)
           BoxShadow(
-            //TODO:
+            color: Color(0xffF1A23A),
+            blurRadius: 10,
+            offset: Offset(0,5)
           ),
         ]
       ),
