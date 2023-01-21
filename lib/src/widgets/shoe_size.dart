@@ -21,7 +21,8 @@ class ShoeSizePreview extends StatelessWidget {
         //Zapato con sombra
         _ShoeShadow(),
 
-        //TODO: Tallas
+        //tallas
+        _ShoeSizes(),
 
           ],
           )
@@ -69,6 +70,59 @@ class _Shadow extends StatelessWidget {
             BoxShadow(color: Color(0xffEAA14E), blurRadius: 40)
           ]
         ),
+      ),
+    );
+  }
+}
+
+class _ShoeSizes extends StatelessWidget { 
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 10),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: <Widget>[
+          _SizesShoeBox( 7 ),
+          _SizesShoeBox( 7.5 ),
+          _SizesShoeBox( 8 ),
+          _SizesShoeBox( 8.5 ),
+          _SizesShoeBox( 9 ),
+          _SizesShoeBox( 9.5 ),
+        ],
+      ),
+    );
+  }
+}
+
+class _SizesShoeBox extends StatelessWidget { 
+
+  final double numSize;
+
+  const _SizesShoeBox( this.numSize);
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      alignment: Alignment.center,
+      child: Text('${numSize.toString().replaceAll('.0', '')}',
+       style: TextStyle(
+          color: Color(0xffF1A23A),
+          fontSize: 15,
+          fontWeight: FontWeight.bold
+      )),
+      height: 45,
+      width: 45,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10),
+        boxShadow: [
+          BoxShadow(
+            //TODO:
+          ),
+        ]
       ),
     );
   }
