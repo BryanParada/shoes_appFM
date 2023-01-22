@@ -19,8 +19,11 @@ class ShoeDescPage extends StatelessWidget {
                     ShoeDescription( 
                     title: 'Nike Air Max 720',
                     description: "The Nike Air Max 720 goes bigger than ever before with Nike's taller Air unit yet, offering more air underfoot for unimaginable, all-day comfort. Has Air Max gone too far? We hope so.",
-
                   ),
+                  
+                  _PriceBuyNow()
+
+
                 ],
               )
             )
@@ -28,6 +31,26 @@ class ShoeDescPage extends StatelessWidget {
 
         ],
       )
+    );
+  }
+}
+
+class _PriceBuyNow extends StatelessWidget {
+  
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 30),
+      child: Container(
+        margin: EdgeInsets.only(top: 20),
+        child: Row(
+          children: <Widget>[
+            Text('\$180.0', style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold)),
+            Spacer(),
+            OrangeButton(text: 'Buy now', myWidth: 120, myHeight: 40,)
+          ],
+        ),
+      ),
     );
   }
 }
