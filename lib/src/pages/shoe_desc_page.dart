@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:shoes_app/src/widgets/custom_widgets.dart';
 
@@ -12,13 +13,18 @@ class ShoeDescPage extends StatelessWidget {
 
           Stack(
             children: [
-              ShoeSizePreview( fullScreen: true),
+              Hero(
+                tag: 'shoe-1',
+                child: ShoeSizePreview( fullScreen: true)
+                ),
 
               Positioned(
                 top: 80,
                 child: FloatingActionButton(
                     child: Icon(Icons.chevron_left, color: Colors.white, size: 60),
-                    onPressed: (){},
+                    onPressed: (){
+                      Navigator.pop(context);
+                    },
                      elevation: 0,
                      backgroundColor: Colors.transparent,
                      highlightElevation: 0,
@@ -109,10 +115,10 @@ class _ColorsAndMore extends StatelessWidget {
           Expanded(
             child: Stack(
               children: [
-                      Positioned(left: 60, child: _ColorButton( Color(0xff364D56) )),
-                      Positioned(left: 40, child: _ColorButton( Color(0Xff2099F1) )),
-                      Positioned(left: 20, child: _ColorButton( Color(0xffFFAD29) )),
-                      _ColorButton( Color(0xffC6D642) ),
+                      Positioned(left: 60, child: _ColorButton( Color(0xff364D56),4 )),
+                      Positioned(left: 40, child: _ColorButton( Color(0Xff2099F1),3 )),
+                      Positioned(left: 20, child: _ColorButton( Color(0xffFFAD29),2 )),
+                      _ColorButton( Color(0xffC6D642),2 ),
               ],
             ),
           ),
@@ -129,17 +135,22 @@ class _ColorsAndMore extends StatelessWidget {
 class _ColorButton extends StatelessWidget { 
 
   final Color color;
+  final int index;
 
-  const _ColorButton(this.color);
+  const _ColorButton(this.color, this.index);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 30,
-      height: 30,
-      decoration: BoxDecoration(
-        color: color,
-        shape: BoxShape.circle
+    return FadeInLeft(
+      delay: Duration( milliseconds: this.index * 100),
+      duration: Duration(milliseconds: 300),
+      child: Container(
+        width: 30,
+        height: 30,
+        decoration: BoxDecoration(
+          color: color,
+          shape: BoxShape.circle
+        ),
       ),
     );
   }
@@ -157,7 +168,11 @@ class _PriceBuyNow extends StatelessWidget {
           children: <Widget>[
             Text('\$180.0', style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold)),
             Spacer(),
-            OrangeButton(text: 'Buy now', myWidth: 120, myHeight: 40,)
+            Bounce(
+              delay: Duration(seconds: 1),
+              from: 8,
+              child: OrangeButton(text: 'Buy now', myWidth: 120, myHeight: 40,)
+              )
           ],
         ),
       ),

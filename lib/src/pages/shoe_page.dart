@@ -20,7 +20,10 @@ class shoePage extends StatelessWidget {
               child: Column(
                 children: const <Widget>[
 
-            ShoeSizePreview(),
+            Hero(
+              tag: 'shoe-1',
+              child: ShoeSizePreview()
+              ),
 
            ShoeDescription( 
               title: 'Nike Air Max 720',
