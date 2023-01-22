@@ -10,7 +10,23 @@ class ShoeDescPage extends StatelessWidget {
       body: Column(
         children: <Widget>[
 
-          ShoeSizePreview( fullScreen: true),
+          Stack(
+            children: [
+              ShoeSizePreview( fullScreen: true),
+
+              Positioned(
+                top: 80,
+                child: FloatingActionButton(
+                    child: Icon(Icons.chevron_left, color: Colors.white, size: 60),
+                    onPressed: (){},
+                     elevation: 0,
+                     backgroundColor: Colors.transparent,
+                     highlightElevation: 0,
+                  ),
+                 
+                )
+            ],
+          ),
 
           Expanded(
             child: SingleChildScrollView(
@@ -23,7 +39,9 @@ class ShoeDescPage extends StatelessWidget {
                   
                   _PriceBuyNow(),
 
-                  _ColorsAndMore()
+                  _ColorsAndMore(),
+
+                  _ButtonsLikeCart(),
 
 
                 ],
@@ -33,6 +51,49 @@ class ShoeDescPage extends StatelessWidget {
 
         ],
       )
+    );
+  }
+}
+
+class _ButtonsLikeCart extends StatelessWidget { 
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 30),
+      padding: EdgeInsets.symmetric(horizontal: 30),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+
+          _ShadowedButton( Icon(Icons.star, color: Colors.red, size: 25,)),
+          _ShadowedButton( Icon(Icons.add_shopping_cart, color: Colors.grey.withOpacity(0.4), size: 25,)),
+          _ShadowedButton( Icon(Icons.settings, color: Colors.grey.withOpacity(0.4), size: 25,)),
+        ],
+      ),
+    );
+  }
+}
+
+class _ShadowedButton extends StatelessWidget { 
+
+  final Icon icon;
+
+  const _ShadowedButton( this.icon);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: this.icon,
+      width: 55,
+      height: 55,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        shape: BoxShape.circle,
+        boxShadow: [
+          BoxShadow( color: Colors.black12, spreadRadius: -5, blurRadius: 20, offset: Offset(0,10))
+        ]
+      ),
     );
   }
 }
