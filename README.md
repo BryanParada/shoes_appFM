@@ -1,6 +1,6 @@
 # shoes_app
 
-Check Professional design of this shoe app
+Check Professional design and animations of this shoe app
 
 ![ezgif-2-c5a17f9bb8](https://user-images.githubusercontent.com/51382458/214054175-b1dc7baf-a084-487d-9334-4c58bb78c75c.gif)
 
