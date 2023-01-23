@@ -1,6 +1,23 @@
 # shoes_app
 
-A new Flutter project.
+Check Professional design of this shoe app
+
+![ezgif-2-c5a17f9bb8](https://user-images.githubusercontent.com/51382458/214054175-b1dc7baf-a084-487d-9334-4c58bb78c75c.gif)
+
+## Features  
+- Choose shoe's size
+- Change Color of the shoe
+
+## What did i use in this app?
+
+- Hero Animation
+- Multiprovider
+- Provider as state handler
+- Many custom Widgets
+- Import simplification
+- Animate_do (a few tricks)
+- Use of static images
+
 
 ## Getting Started
 
