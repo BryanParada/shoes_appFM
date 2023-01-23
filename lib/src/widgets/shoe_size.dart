@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:shoes_app/src/models/shoe_model.dart';
 import 'package:shoes_app/src/pages/shoe_desc_page.dart';
 
 
@@ -129,27 +131,36 @@ class _SizesShoeBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      alignment: Alignment.center,
-      child: Text('${numSize.toString().replaceAll('.0', '')}',
-       style: TextStyle(
-          color: (this.numSize == 9) ? Colors.white :   Color(0xffF1A23A),
-          fontSize: 15,
-          fontWeight: FontWeight.bold
-      )),
-      height: 45,
-      width: 45,
-      decoration: BoxDecoration(
-        color: (this.numSize == 9) ? Color(0xffF1A23A) : Colors.white,
-        borderRadius: BorderRadius.circular(10),
-        boxShadow: [
-          if(this.numSize == 9)
-          BoxShadow(
-            color: Color(0xffF1A23A),
-            blurRadius: 10,
-            offset: Offset(0,5)
-          ),
-        ]
+
+    final shoeModel = Provider.of<ShoeModel>(context);
+
+    return GestureDetector(
+      onTap: (){
+        final shoeModel = Provider.of<ShoeModel>(context, listen: false);
+        shoeModel.size = this.numSize;
+      },
+      child: Container(
+        alignment: Alignment.center,
+        child: Text('${numSize.toString().replaceAll('.0', '')}',
+         style: TextStyle(
+            color: (this.numSize == shoeModel.size) ? Colors.white :   Color(0xffF1A23A),
+            fontSize: 15,
+            fontWeight: FontWeight.bold
+        )),
+        height: 45,
+        width: 45,
+        decoration: BoxDecoration(
+          color: (this.numSize == shoeModel.size) ? Color(0xffF1A23A) : Colors.white,
+          borderRadius: BorderRadius.circular(10),
+          boxShadow: [
+            if(this.numSize == shoeModel.size)
+            BoxShadow(
+              color: Color(0xffF1A23A),
+              blurRadius: 10,
+              offset: Offset(0,5)
+            ),
+          ]
+        ),
       ),
     );
   }
