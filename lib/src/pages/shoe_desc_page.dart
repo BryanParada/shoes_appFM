@@ -1,5 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:shoes_app/src/models/shoe_model.dart';
 import 'package:shoes_app/src/widgets/custom_widgets.dart';
 
 class ShoeDescPage extends StatelessWidget {
@@ -115,10 +117,10 @@ class _ColorsAndMore extends StatelessWidget {
           Expanded(
             child: Stack(
               children: [
-                      Positioned(left: 60, child: _ColorButton( Color(0xff364D56),4 )),
-                      Positioned(left: 40, child: _ColorButton( Color(0Xff2099F1),3 )),
-                      Positioned(left: 20, child: _ColorButton( Color(0xffFFAD29),2 )),
-                      _ColorButton( Color(0xffC6D642),2 ),
+                      Positioned(left: 60, child: _ColorButton( Color(0xff364D56),4, 'assets/imgs/negro.png' )),
+                      Positioned(left: 40, child: _ColorButton( Color(0Xff2099F1),3, 'assets/imgs/azul.png' )),
+                      Positioned(left: 20, child: _ColorButton( Color(0xffFFAD29),2, 'assets/imgs/amarillo.png' )),
+                      _ColorButton( Color(0xffC6D642),2, 'assets/imgs/verde.png' ),
               ],
             ),
           ),
@@ -136,20 +138,29 @@ class _ColorButton extends StatelessWidget {
 
   final Color color;
   final int index;
+  final String urlImage;
 
-  const _ColorButton(this.color, this.index);
+  const _ColorButton(this.color, this.index, this.urlImage);
 
   @override
   Widget build(BuildContext context) {
     return FadeInLeft(
       delay: Duration( milliseconds: this.index * 100),
       duration: Duration(milliseconds: 300),
-      child: Container(
-        width: 30,
-        height: 30,
-        decoration: BoxDecoration(
-          color: color,
-          shape: BoxShape.circle
+      child: GestureDetector(
+        onTap: (){
+
+          final shoeModel = Provider.of<ShoeModel>(context, listen: false);
+          shoeModel.assetImage = this.urlImage;
+
+        },
+        child: Container(
+          width: 30,
+          height: 30,
+          decoration: BoxDecoration(
+            color: color,
+            shape: BoxShape.circle
+          ),
         ),
       ),
     );
